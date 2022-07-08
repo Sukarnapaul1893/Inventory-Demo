@@ -5,9 +5,11 @@ namespace InventoryDemo.Controllers
 {
     public class LoginController : Controller
     {
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            return View();
+            var x = new LoginView();
+            
+            return View(x);
         }
     }
 }

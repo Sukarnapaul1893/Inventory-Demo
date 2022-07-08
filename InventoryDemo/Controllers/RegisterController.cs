@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InventoryDemo.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryDemo.Controllers
 {
@@ -6,6 +7,8 @@ namespace InventoryDemo.Controllers
     {
         public IActionResult Index()
         {
+            var x = new RegisterView();
+
             return View();
         }
     }
