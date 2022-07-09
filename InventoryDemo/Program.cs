@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using InventoryDemo.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("InventoryDemoDbContextConnection") ?? throw new InvalidOperationException("Connection string 'InventoryDemoDbContextConnection' not found.");
+builder.Services.AddDbContext<InventoryDemoContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("InventoryDemoContext") ?? throw new InvalidOperationException("Connection string 'InventoryDemoContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
