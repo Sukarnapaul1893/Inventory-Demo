@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EMAUKKI+E+WsPwee/oqt6hQMhdT8N30vnxihE0T6qBo=",
+  "Hash": "nKiqLTAJR/Z0R/dcenNAXsBeiBBryTmJZ5p0gjPU7fY=",
   "Source": "InventoryDemo",
   "BasePath": "_content/InventoryDemo",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Project\\Inventory-Demo\\InventoryDemo\\wwwroot\\Images\\coke_5.jpg",
+      "SourceId": "InventoryDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Project\\Inventory-Demo\\InventoryDemo\\wwwroot\\",
+      "BasePath": "_content/InventoryDemo",
+      "RelativePath": "Images/coke_5.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\coke_5.jpg"
     },
     {
       "Identity": "D:\\Project\\Inventory-Demo\\InventoryDemo\\wwwroot\\js\\site.js",

@@ -1,5 +1,59 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<InventoryDemo.Models.ViewModels.ProductView>
+
 @{
+    ViewData["Title"] = "Index";
 }
+
+<h1>Product List</h1>
+<td><p style="font-size:18px"><a asp-action="Create" style="color:whitesmoke" class="btn btn-success btn-md">Create New</a></p></td>
+<table class="table">
+    <thead>
+        <tr>
+            <th align = "center">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            
+            <th align = "center">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th align = "center">
+                @Html.DisplayNameFor(model => model.Instock)
+            </th>
+
+            <th align = "center">
+                @Html.DisplayNameFor(model => model.InstockWeight)
+            </th>
+
+            <th align = "center">
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+    @foreach (var item in Model) {
+        <tr>
+            <td align = "center" style="padding-top:45px;">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td align = "center" style="padding-top:45px;">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td align = "center" style="padding-top:45px;">
+                @Html.DisplayFor(modelItem => item.Instock)
+            </td>
+            <td align = "center" style="padding-top:45px;">
+                @Html.DisplayFor(modelItem => item.InstockWeight)
+            </td>
+            <td align = "center">
+                <img src = @Html.DisplayFor(modelItem => item.Image) style="object-fit:contain;  width:100px;  height:100px;   border: solid 1px #CCC">
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-md">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-md">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+ 

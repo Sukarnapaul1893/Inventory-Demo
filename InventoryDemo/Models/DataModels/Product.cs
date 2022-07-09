@@ -4,6 +4,10 @@ namespace InventoryDemo.Models.DataModels
 {
     public class Product
     {
+        public Product()
+        {
+            Image = "";
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
@@ -11,7 +15,5 @@ namespace InventoryDemo.Models.DataModels
         public double InstockWeight { get; set; }
         public string Image { get; set; }
 
-        [NotMapped]
-        public IFormFile FileUpload { get; set; }
     }
 }
