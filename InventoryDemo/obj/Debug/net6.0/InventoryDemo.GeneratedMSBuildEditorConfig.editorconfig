@@ -15,6 +15,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Project\Inventory-Demo\InventoryDemo
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Project/Inventory-Demo/InventoryDemo/Views/CompanyInfo/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueUluZm9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/Inventory-Demo/InventoryDemo/Views/CompanyInfo/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueUluZm9cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Project/Inventory-Demo/InventoryDemo/Views/CompanyInfo/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueUluZm9cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

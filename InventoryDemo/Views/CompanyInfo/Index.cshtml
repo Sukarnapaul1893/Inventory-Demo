@@ -1,5 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<InventoryDemo.Models.ViewModels.CompanyInfoView>
+
 @{
+    ViewData["Title"] = "Index";
 }
+
+<h1>Our Branches</h1>
+<td><p style="font-size:18px"><a asp-action="Create" style="color:whitesmoke" class="btn btn-success btn-md">Create New Branch</a></p></td>
+<table class="table">
+    <thead>
+        <tr>
+            <th align = "center" style="padding-left:30px;">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            
+            <th align = "center">
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+
+            <th align = "center">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th align = "center">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+
+            <th align = "center" style="padding-left:20px;">
+                @Html.DisplayNameFor(model => model.Website)
+            </th>
+        </tr>
+    </thead>
+    <tbody id="table-body"> 
+    @foreach (var item in Model) {
+        <tr>
+            <td align = "left" style="padding-top:45px; padding-left:10px;">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td align = "left" style="padding-top:45px; padding-left:10px;">
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td align = "left" style="padding-top:45px; padding-left:30px;">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td align = "left" style="padding-top:45px; padding-left:50px;">
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td style="padding-top:45px;">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-md">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-md">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+ 

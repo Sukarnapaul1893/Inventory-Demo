@@ -9,7 +9,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th align = "center">
+            <th align = "center" style="padding-left:30px;">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             
@@ -25,30 +25,30 @@
                 @Html.DisplayNameFor(model => model.InstockWeight)
             </th>
 
-            <th align = "center">
+            <th align = "center" style="padding-left:20px;">
                 @Html.DisplayNameFor(model => model.Image)
             </th>
         </tr>
     </thead>
-    <tbody id="table-body">
+    <tbody id="table-body"> 
     @foreach (var item in Model) {
         <tr>
-            <td align = "center" style="padding-top:45px;">
+            <td align = "left" style="padding-top:45px; padding-left:10px;">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td align = "center" style="padding-top:45px;">
+            <td align = "left" style="padding-top:45px; padding-left:10px;">
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td align = "center" style="padding-top:45px;">
+            <td align = "left" style="padding-top:45px; padding-left:30px;">
                 @Html.DisplayFor(modelItem => item.Instock)
             </td>
-            <td align = "center" style="padding-top:45px;">
+            <td align = "left" style="padding-top:45px; padding-left:50px;">
                 @Html.DisplayFor(modelItem => item.InstockWeight)
             </td>
-            <td align = "center">
+            <td align = "left">
                 <img src = @Html.DisplayFor(modelItem => item.Image) style="object-fit:contain;  width:100px;  height:100px;   border: solid 1px #CCC">
             </td>
-            <td>
+            <td style="padding-top:45px;">
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-md">Edit</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-md">Delete</a>
             </td>

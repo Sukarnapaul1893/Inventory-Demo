@@ -17,7 +17,5 @@ namespace InventoryDemo.Models.DataModels
         public double Salary { get; set; }
         public string Image { get; set; }
 
-        [NotMapped]
-        public IFormFile FileUpload { get; set; }
     }
 }
