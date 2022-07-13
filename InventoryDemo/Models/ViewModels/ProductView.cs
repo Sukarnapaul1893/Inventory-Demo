@@ -4,6 +4,10 @@ namespace InventoryDemo.Models.ViewModels
 {
     public class ProductView
     {
+        public ProductView()
+        {
+            Image = "";
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }

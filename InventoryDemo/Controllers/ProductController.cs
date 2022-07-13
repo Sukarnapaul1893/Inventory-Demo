@@ -67,6 +67,47 @@ namespace InventoryDemo.Controllers
             return View(productVM);
         }
 
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Product.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            string path = ".\\wwwroot"+product.Image;
+            using (var stream = System.IO.File.OpenRead(path))
+            {
+                ProductView productVM = new ProductView
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Price = product.Price,
+                    Instock = product.Instock,
+                    InstockWeight = product.InstockWeight,
+                    Image = product.Image,
+                    FileUpload = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name))
+                };
+                return View(productVM);
+            }
+            /*ProductView productVM = new ProductView
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Instock = product.Instock,
+                InstockWeight = product.InstockWeight,
+                Image = product.Image,
+                FileUpload = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name))
+            };
+
+            return View(productVM);*/
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Price, Instock, InstockWeight, FileUpload, Image")] ProductView productVM)
@@ -78,13 +119,13 @@ namespace InventoryDemo.Controllers
 
             if (ModelState.IsValid)
             {
-                productVM.Image = Path.GetFileName(productVM.FileUpload.FileName);
+                var x = Path.GetFileName(productVM.FileUpload.FileName);
 
                 var file = productVM.FileUpload;
 
                 if (file.Length > 0)
                 {
-                    productVM.Image = "\\Images\\" + productVM.Image;
+                    productVM.Image = "\\Images\\" + x;
                 }
 
                 Product product = new Product
@@ -97,6 +138,35 @@ namespace InventoryDemo.Controllers
                     Image = productVM.Image
                 };
 
+                try
+                {
+                    _context.Update(product);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductExists(product.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+
+            
+
+            if (productVM.FileUpload == null && productVM.Id!=null && productVM.Name!=null && productVM.Price!=null && productVM.Instock!=null && productVM.InstockWeight!=null)
+            {
+                var product = _context.Product.Where(x => x.Id == productVM.Id).FirstOrDefault();
+                product.Name = productVM.Name;
+                product.Instock = productVM.Instock;
+                product.InstockWeight = productVM.InstockWeight;
+                product.Price = productVM.Price;
+                
                 try
                 {
                     _context.Update(product);
