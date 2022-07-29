@@ -1,10 +1,11 @@
-﻿@model IEnumerable<InventoryDemo.Models.ViewModels.SalesmanView>
+﻿@model IEnumerable<InventoryDemo.Models.ViewModels.CustomerView>
 
 @{
     ViewData["Title"] = "Index";
+    var premium = "Yes";
 }
 
-<h1>Salesman List</h1>
+<h1>Customer List</h1>
 <td><p style="font-size:18px"><a asp-action="Create" style="color:whitesmoke" class="btn btn-success btn-md">Create New</a></p></td>
 <table class="table" border="1">
     <thead>
@@ -14,27 +15,11 @@
             </th>
             
             <th align = "left">
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-
-            <th align = "left">
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
 
             <th align = "left">
-                @Html.DisplayNameFor(model => model.Salary)
-            </th>
-
-            <th align = "left">
-                @Html.DisplayNameFor(model => model.TotalSellCustomer)
-            </th>
-            
-            <th align = "left">
-                @Html.DisplayNameFor(model => model.TotalSellPrice)
-            </th>
-            
-            <th align = "left">
-                @Html.DisplayNameFor(model => model.Image)
+                @Html.DisplayNameFor(model => model.PremiumMembership)
             </th>
 
             <th align = "center" style="padding-left:20px;">
@@ -50,28 +35,17 @@
             </td>
             
             <td align = "left" style="padding-top:45px;">
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            
-            <td align = "left" style="padding-top:45px;">
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             
             <td align = "left" style="padding-top:45px;">
-                @Html.DisplayFor(modelItem => item.Salary)
+                @{
+                    if (item.PremiumMembership) premium = "Yes";
+                    else premium = "No";
+                }
+                @premium
             </td>
-            
-            <td align = "left" style="padding-top:45px;">
-                @Html.DisplayFor(modelItem => item.TotalSellCustomer)
-            </td>
-            
-            <td align = "left" style="padding-top:45px;">
-                @Html.DisplayFor(modelItem => item.TotalSellPrice)
-            </td>
-            
-            <td align = "left">
-                <img src = @Html.DisplayFor(modelItem => item.Image) style="object-fit:contain;  width:100px;  height:100px;   border: solid 1px #CCC">
-            </td>
+
             <td style="padding-top:45px;">
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-md">Edit</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-md">Delete</a>

@@ -2,9 +2,9 @@
 
 namespace InventoryDemo.Models.ViewModels
 {
-    public class ProductView
+    public class SaleProductView
     {
-        public ProductView()
+        public SaleProductView()
         {
             Image = "";
         }
@@ -16,7 +16,5 @@ namespace InventoryDemo.Models.ViewModels
         public string Image { get; set; }
         public bool IsPurchased { get; set; }
 
-        [NotMapped]
-        public IFormFile FileUpload { get; set; }
     }
 }

@@ -1,5 +1,176 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model InventoryDemo.Models.ViewModels.SaleView
+
 @{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Sale</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group" style="padding-top: 15px;">
+                <button type="button" class="btn btn-info btn-md"
+                        id="select-customer" style="color:whitesmoke" onclick="showCustomerModal()">Select Customer
+                </button>
+            </div>
+            
+            <div class="form-group" style="padding-top: 15px;">
+                <button type="button" class="btn btn-info btn-md"
+                        id="select-product" style="color:whitesmoke" onclick='showProductModal()'>Select Product
+                </button>
+            </div>
+            
+            <div class="form-group" style="padding-top: 15px;">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            
+            <div class="modal fade" id="customer-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Select Customer</h3>
+                            <button type="button" class="btn-close" data-dismiss="modal" id="cross-close-customer" onclick="closeCustomerModal()"></button>
+                        </div>
+                            
+                        <div class="modal-body" id="modal-body-create">
+                            <table style="width: 100%; border-spacing: 15px;" class="table">
+                                <thead>
+                                    <tr class="column-gap">
+                                        <th>
+                                            Select 
+                                        </th>
+                                        <th>
+                                            Customer Name
+                                        </th>
+                                        <th>
+                                            Phone Number
+                                        </th>
+                                        <th>
+                                            Membership Type
+                                        </th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    @for (var i = 0; i < Model.Customers.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input asp-for="Customers[i].IsPurchasing" type="checkbox" />
+                                            </td>
+                                            <td>
+                                                <p>@Model.Customers[i].Name</p>
+                                                <input asp-for="Customers[i].Id" type="hidden" />
+                                                <input asp-for="Customers[i].Name" type="hidden" />
+                                            </td>
+                                            <td>
+                                                <p>@Model.Customers[i].PhoneNumber</p>
+                                                <input asp-for="Customers[i].PhoneNumber" type="hidden" />
+                                            </td>
+                                            <td>
+                                                <p>@Model.Customers[i].PremiumMembership</p>
+                                                <input asp-for="Customers[i].PremiumMembership" type="hidden" />
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                            
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="svBtn" onclick="closeCustomerModal()">Save</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="clsBtn" onclick="closeCustomerModal()">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="modal" id="product-modal">
+                <div class="modal-dialog" >
+                    <div class="modal-content" style="width:150%; left:-50%">
+                        <div class="modal-header">
+                            <h3>Select Product</h3>
+                            <button type="button" class="btn-close" data-dismiss="modal" id="cross-close-product" onclick="closeProductModal()"></button>
+                        </div>
+                            
+                        <div class="modal-body" id="modal-body-create-product">
+                            <table style="width: 100%; border-spacing: 15px;" class="table">
+                                <thead>
+                                    <tr class="column-gap">
+                                        <th>
+                                            Select
+                                        </th>
+                                        <th>
+                                            Product Name
+                                        </th>
+                                        <th>
+                                            Unit/Kg Price 
+                                        </th>
+                                        <th>
+                                            Units
+                                        </th>
+                                        <th>
+                                            Weight(Kg)
+                                        </th>
+                                        <th>
+                                            Picture
+                                        </th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    @for (var i = 0; i < Model.Products.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input asp-for="Products[i].IsPurchased" type="checkbox" onclick="EnableProductBoxes(@i)"/>
+                                            </td>
+                                            <td>
+                                                <p>@Model.Products[i].Name</p>
+                                                <input asp-for="Products[i].Id" type="hidden" />
+                                                <input asp-for="Products[i].Name" type="hidden" />
+                                            </td>
+                                            <td>
+                                                <p>@Model.Products[i].Price</p>
+                                                <input asp-for="Products[i].Price" type="hidden" />
+                                            </td>
+                                            <td>
+                                                <input disabled="true" asp-for="Products[i].Instock" class="form-control" />
+                                                <span asp-validation-for="Products[i].Instock" class="text-danger"></span>  
+                                            </td>
+                                            <td>
+                                                <input disabled="true" asp-for="Products[i].InstockWeight" class="form-control" />
+                                                <span asp-validation-for="Products[i].InstockWeight" class="text-danger"></span>  
+                                            </td>
+                                            <td>
+                                                <img src = @Html.DisplayFor(modelItem => Model.Products[i].Image) style="object-fit:contain;  width:100px;  height:100px;   border: solid 1px #CCC">
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                            
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-button-product" onclick="closeProductModal()">Save</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="close-button-product" onclick="closeProductModal()">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="padding-top: 18px;">
+    <a asp-action="Index" class="btn btn-primary">Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

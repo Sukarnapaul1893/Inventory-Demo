@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7QIdZ7YCMcsjGaLj0FWb8X4NnFYwBBAK3hM8eLhzy8g=",
+  "Hash": "SIiA3rYTJWlxrnVwUeEyymOzDS9PYZzbUPxySsnhn2c=",
   "Source": "InventoryDemo",
   "BasePath": "_content/InventoryDemo",
   "Mode": "Default",
@@ -1120,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\coke_5.jpg"
+    },
+    {
+      "Identity": "D:\\Project\\Inventory-Demo\\InventoryDemo\\wwwroot\\Images\\doveSoap.jpg",
+      "SourceId": "InventoryDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Project\\Inventory-Demo\\InventoryDemo\\wwwroot\\",
+      "BasePath": "_content/InventoryDemo",
+      "RelativePath": "Images/doveSoap.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\doveSoap.jpg"
     },
     {
       "Identity": "D:\\Project\\Inventory-Demo\\InventoryDemo\\wwwroot\\Images\\Logo.PNG",

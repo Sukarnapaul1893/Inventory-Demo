@@ -4,6 +4,7 @@ using InventoryDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventoryDemo.Migrations
 {
     [DbContext(typeof(InventoryDemoContext))]
-    partial class InventoryDemoContextModelSnapshot : ModelSnapshot
+    [Migration("20220714130022_SaleDateTime")]
+    partial class SaleDateTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,9 +72,6 @@ namespace InventoryDemo.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PremiumMembership")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

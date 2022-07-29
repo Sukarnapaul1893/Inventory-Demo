@@ -24,6 +24,10 @@ namespace InventoryDemo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index([Bind("Id, Email, Password")] LoginView loginVM)
         {
+            ViewBag.LoginUser = loginVM.Email;
+            ViewBag.LoginPassword = loginVM.Password;
+            ViewBag.LoginCompleted = false;
+
             Login login = new Login();
             login.Id = loginVM.Id;
             login.Email = loginVM.Email;
@@ -35,6 +39,7 @@ namespace InventoryDemo.Controllers
                 
                 if (login.Email == "admin" && login.Password == "123")
                 {
+                    ViewBag.LoginCompleted = true;
                     _context.Add(login);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index", "Home");
@@ -46,9 +51,7 @@ namespace InventoryDemo.Controllers
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index","Home");
                 }
-
-                
-                
+            
             }
 
             return View(loginVM);
